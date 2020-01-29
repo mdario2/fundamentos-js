@@ -10,13 +10,13 @@ var dario = {
 var maria = {
 	nombre: 'maria',
 	apellido: 'perez',
-	edad: 20
+	edad: 35
 }
 
 var margarita = {
 	nombre: 'angie',
 	apellido: 'rojas',
-	edad: 23
+	edad: 53
 }
 
 
@@ -34,9 +34,11 @@ function printNameAndAge(persona)
 	console.log("Hola mi nombre es: "+nombre+" y tengo "+edad+" anios")
 }
 
-//printInMayus(dario)
-//printInMayus(maria)
-//printInMayus({nombre: 'Pepito'})
-printNameAndAge(margarita)
-printNameAndAge(dario)
-
+//Pasando un objeto como referencia
+function cumpleanios(persona)
+{
+	return{
+		...persona,
+		edad: persona.edad +1
+	}
+}
