@@ -11,17 +11,22 @@ const INCREMENTO_PESO = 0.2
 const DIAS_DEL_ANIO = 365
 const aumentarDepeso = (persona) => persona.peso += INCREMENTO_PESO
 const adelgazar = (persona) => persona.peso -= INCREMENTO_PESO
+const comeMucho = () => Math.random() < 0.3
+const haceDeporte = () => Math.random() < 0.4
+var dias = 0
+const META = manuel.peso - 3
 
-for (var i = 0; i <= DIAS_DEL_ANIO; i++) {
-	
-	var random = Math.random()
-	if (random < 0.25)
-	 {
-	 	aumentarDepeso(manuel)
-	 }else if (random < 0.5)
-	  {
-	  	adelgazar(manuel)
-	 }
+while(manuel.peso > META)
+{
+	if (comeMucho()) {
+		//aumenta de peso
+		aumentarDepeso(manuel)
+	}
+	if (haceDeporte()){ //adelgaza
+		adelgazar(manuel)
+	}
+	dias++
 }
 
-console.log(`Al final del año ${manuel.nombre} pesa ${manuel.peso.toFixed(2)}kg`)
+
+console.log(`Pasaron ${dias} dias hasta que ${manuel.nombre} adelgazo 3kg`)
