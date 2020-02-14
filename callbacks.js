@@ -9,23 +9,33 @@ function obtenerPersonaje(id,callback)
 {
 	const url = `${API_URL}${PEOPLE_URL.replace(':id',id)}`
 	//request
-	$.get( url , opts , function(luke){
-	console.log(`Hola yo soy ${luke.name} y mi altura es: ${luke.height}`)
-
-	if(callback)
-	{
-		callback()
-	}
-})
+	$
+		.get( url , opts , callback)
+		.fail(() => {
+		console.log(`Sucedió un error. No se pudo obtener el personaje ${id}`)
+		})
 }
 
-obtenerPersonaje(1, function(){
-	obtenerPersonaje(2, function () {
-		obtenerPersonaje(3, function () {
-			obtenerPersonaje(4 , function () {
-				obtenerPersonaje(5)
+obtenerPersonaje(1, function(personaje){
+	console.log(`Hola yo soy ${personaje.name} y mi altura es: ${personaje.height}`)
+
+	obtenerPersonaje(2, function(personaje){
+	console.log(`Hola yo soy ${personaje.name} y mi altura es: ${personaje.height}`)
+
+		obtenerPersonaje(3, function(personaje){
+	console.log(`Hola yo soy ${personaje.name} y mi altura es: ${personaje.height}`)
+
+			obtenerPersonaje(4 , function(personaje){
+	console.log(`Hola yo soy ${personaje.name} y mi altura es: ${personaje.height}`)
+
+				obtenerPersonaje(5 , function(personaje){
+	console.log(`Hola yo soy ${personaje.name} y mi altura es: ${personaje.height}`)
+
+					obtenerPersonaje(6, function(personaje){
+	console.log(`Hola yo soy ${personaje.name} y mi altura es: ${personaje.height}`)
+				})
 			})
 		})
 	})
 })
-
+})
