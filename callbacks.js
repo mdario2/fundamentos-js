@@ -23,8 +23,22 @@ function obtenerPersonaje(id)
 	function onError(id) {
 		console.log(`Sucedio un error a obtener el personaje ${id}`)
 	}
+
+	var ids = [1,2,3,4,5]
+	/*var promesas = ids.map(function (id) {
+		return obtenerPersonaje()
+	})*/
+
+	var promesas = ids.map( id => obtenerPersonaje(id))
+
+	Promise
+		.all(promesas)
+		.then(personajes => console.log(personajes))
+
+
 		
 //Encadenando promesas mucho mas legible que los callbacks anidados
+/*
 obtenerPersonaje(1)
 	.then( personaje => {
 	console.log(`El personaje 1 es ${personaje.name}`)
@@ -47,5 +61,6 @@ obtenerPersonaje(1)
 		return obtenerPersonaje(6)
 })
 	.catch(onError)
+*/
 
 
